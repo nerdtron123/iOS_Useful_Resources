@@ -1,0 +1,31 @@
+[Malware iOS 10.3.2+]
+	An attacker is able to remotely trigger code or monitor a device using a PHP server / client API.
+	This issue should be fixed by blocking incoming connections with a firewall.
+	I know this is not a real issue but this is still not very great for users.
+	An example of the structure of the program:
+
+- Client side (iOS app)
+	Send requests to a server every second by misusing the taskscheduler API.
+	In better situations an attacker would use the remote notifications API, but that will require Apple to provide a certificate.
+	By checking the response of the request the app will know what code to execute.
+	Imagine that it is already possible to execute shell commands remotely on a jailbroken device this way.
+	Using C's system() method.
+
+- Server side (PHP)
+	The server collects the uniqueIdentifier for vendor from the UIDevice API.
+	This is used to identify the device.
+	By getting the action that the attacker wants to peform on the device from a texbox, the server will send a request to the app and the app will perform the action.
+
+[Kernel bug 10.3.2]
+	An attacker is able to cause a denial-of-service on an iOS device by making use of a certain trap.
+	The trap used in the exploit is one that tries to fork the process.
+	A normal behavior would be that the sandbox denies the process fork and the app will continue to run.
+	What will happen in our case is that the fork already assigns an address to be used for the fork but since the sandbox disallows it, it won't fork.
+	Because my code runs in an endless fork-loop, new addresses are being assigned every millisecond, which causes the address space to run out of adresses.
+	The kernel function alloc_asid will then terminate the OS (panic) to free all addresses again, resulting in this denial of service.
+
+[Kernel bug 10.3.2 ???]
+	It seems like IOKit's powermanagement functions for almost all drivers are not Serialized very well.
+	This makes this part of the iOS kernel a very interesting part to create a ROP-chain if a vulnerability is discovered.
+	Many of the methods use printf("%s", unsigned long), which does not feel very great to me, since no input was validated or types were compared.
+	The function I am currently examining is IOService::changePowerStatToPriv(unsigned long)

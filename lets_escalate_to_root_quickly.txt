@@ -1,0 +1,16 @@
+To escalate to root you should be looking in process communication protocols.
+
+The main protocols for that are
+
+ipc
+xpc
+and mach_messages
+
+xpc is highlevel (sandbox level)
+ipc is lowlevel (kernel level)
+
+Since applications are able to use these protocols and can send messages using it to other processes running on the device or the kernel,
+The best way to make use of it is to find a way to use these messages maliciously so you get all the permissions to receive and send.
+If you can get READ and WRITE permissions by using some bug, you basically can communicate with processes like launchd, powerd, coreduetd and inetd to try to escalate to root.
+Happy pwning, because since Ian Beer has reported many vulnerabilities with them, Apple has made it very hard to exploit using the framework.
+But this stays a very great way to exploit.

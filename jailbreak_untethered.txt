@@ -1,0 +1,4 @@
+Since iOS stores it's kernelcache in /System/Library/Caches/com.apple.kernelcaches/kernelcache
+I think an untethered jailbreak would be possible.
+What iBoot does is just load the kernel at that location, so if you can put a patched kernel into that directory that automatically loads the jailbreak you basically can be untethered jailbroken.
+NOTE: I will not make those patches ever.

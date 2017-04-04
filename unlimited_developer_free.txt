@@ -1,0 +1,4 @@
+Yeah I know, it might sound stupid but since an iOS binary inside an app contains the SSL certificate that it is signed with,
+you can overwrite that part of your binary via your binary by overflowing a buffer.
+
+Why would you do that? Well, I think, maybe extensive codesigning. That would be fk funny, signing for months using a free developer certificate.

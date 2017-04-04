@@ -1,0 +1,3 @@
+Stack check guard is present in all iOS binaries.
+It checks if memory is corrupted.
+If there is a way to fool stack_check_guard in combination with fooling symlinks, there might be a possibility to bypass the sandbox.
