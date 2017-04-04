@@ -1,4 +1,4 @@
-# iOS_Useful_Resources
+# iOS Security Resources
 Useful resources for iOS Security Research
 
 
