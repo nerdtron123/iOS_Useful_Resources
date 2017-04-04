@@ -12,6 +12,9 @@ Too hard? Newb, begin at https://hackthissite.org
 Useful IDA Plugins:
 http://www.keystone-engine.org/keypatch/
 
+Useful precompiled macOS binaries for iOS Reverse Engineering:
+https://t.co/omwZCuubOC
+
 If you're hacker and you know it shut your mouth, 
 If you're hacker and you know it shut your mouth, 
 if you're a hacker and you know and you're sure you want to show it if you're a hacker and you know it shut your mouth.
